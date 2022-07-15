@@ -1,4 +1,4 @@
-# Copyright (C) 2021 by Ivan.
+# Copyright (C) 2021-2022 by Ivan.
 # This file is part of Snowflake package.
 # Snowflake is released under the MIT License (see LICENSE).
 
@@ -29,6 +29,7 @@ setuptools.setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: 3 :: Only',
         'Topic :: Database',
         'Topic :: Internet',

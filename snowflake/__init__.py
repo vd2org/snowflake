@@ -1,4 +1,4 @@
-# Copyright (C) 2021 by Ivan.
+# Copyright (C) 2021-2022 by Ivan.
 # This file is part of Snowflake package.
 # Snowflake is released under the MIT License (see LICENSE).
 

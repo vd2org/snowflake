@@ -25,6 +25,7 @@ for i in range(100):
     val = next(gen)
     print(val)
 ```
+
 #### Output:
 
 ```text
@@ -50,6 +51,7 @@ print(f"{sf.seq = }")
 print(f"{sf.seconds = }")
 print(f"{sf.milliseconds = }")
 print(f"{sf.datetime = }")
+print(f"{int(sf) = }")
 ```
 
 #### Output:
@@ -62,6 +64,7 @@ sf.seq = 15
 sf.seconds = 1492960851.339
 sf.milliseconds = 1492960851339
 sf.datetime = datetime.datetime(2017, 4, 23, 15, 20, 51, 339000)
+int(sf) = 856165981072306191
 ```
 
 ### Load generator state

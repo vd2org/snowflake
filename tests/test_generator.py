@@ -1,4 +1,4 @@
-# Copyright (C) 2021 by Ivan.
+# Copyright (C) 2021-2022 by Ivan.
 # This file is part of Snowflake package.
 # Snowflake is released under the MIT License (see LICENSE).
 
@@ -28,6 +28,8 @@ def test_generator():
 
     assert sf.value == val
 
+    assert int(sf) == val
+
 
 def test_gen_many():
     gen = SnowflakeGenerator(MAX_INSTANCE - 1, epoch=4096)
@@ -49,10 +51,10 @@ def test_instance_overflow():
 
     SnowflakeGenerator(MAX_INSTANCE)
 
-    with pytest.raises(ValueError, match="instance must be greater than 0 and less than 1023!"):
+    with pytest.raises(ValueError, match="instance must not be negative and must be less than 1023!"):
         SnowflakeGenerator(-1)
 
-    with pytest.raises(ValueError, match="instance must be greater than 0 and less than 1023!"):
+    with pytest.raises(ValueError, match="instance must not be negative and must be less than 1023!"):
         SnowflakeGenerator(MAX_INSTANCE + 1)
 
 
@@ -61,10 +63,10 @@ def test_seq_overflow():
 
     SnowflakeGenerator(0, seq=MAX_SEQ)
 
-    with pytest.raises(ValueError, match="seq must be greater than 0 and less than 4095!"):
+    with pytest.raises(ValueError, match="seq must not be negative and must be less than 4095!"):
         SnowflakeGenerator(0, seq=-1)
 
-    with pytest.raises(ValueError, match="seq must be greater than 0 and less than 4095!"):
+    with pytest.raises(ValueError, match="seq must not be negative and must be less than 4095!"):
         SnowflakeGenerator(0, seq=MAX_SEQ + 1)
 
 
@@ -73,10 +75,10 @@ def test_epoch_overflow():
 
     SnowflakeGenerator(0, epoch=int(time() * 1000))
 
-    with pytest.raises(ValueError, match=r"epoch must be greater than 0 and lower than current time (\d+)!"):
+    with pytest.raises(ValueError, match=r"epoch must not be negative and must be lower than current time (\d+)!"):
         SnowflakeGenerator(0, epoch=-1)
 
-    with pytest.raises(ValueError, match=r"epoch must be greater than 0 and lower than current time (\d+)!"):
+    with pytest.raises(ValueError, match=r"epoch must not be negative and must be lower than current time (\d+)!"):
         SnowflakeGenerator(0, epoch=int(time() * 1000 + 10000))
 
 
@@ -85,8 +87,8 @@ def test_timestamp_overflow():
 
     SnowflakeGenerator(0, timestamp=int(time() * 1000))
 
-    with pytest.raises(ValueError, match=r"timestamp must be greater than 0 and less than (\d+)!"):
+    with pytest.raises(ValueError, match=r"timestamp must not be negative and must be less than (\d+)!"):
         SnowflakeGenerator(0, timestamp=-1)
 
-    with pytest.raises(ValueError, match=r"timestamp must be greater than 0 and less than (\d+)!"):
+    with pytest.raises(ValueError, match=r"timestamp must not be negative and must be less than (\d+)!"):
         SnowflakeGenerator(0, timestamp=int(time() * 1000 + 10000))

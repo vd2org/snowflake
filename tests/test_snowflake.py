@@ -1,4 +1,4 @@
-# Copyright (C) 2021 by Ivan.
+# Copyright (C) 2021-2022 by Ivan.
 # This file is part of Snowflake package.
 # Snowflake is released under the MIT License (see LICENSE).
 
@@ -39,6 +39,8 @@ def test_parse():
 
     assert sf.value == 856165981072306191
 
+    assert int(sf) == 856165981072306191
+
 
 def test_min():
     assert Snowflake(0, 0).value == 0
@@ -53,10 +55,10 @@ def test_timestamp_overflow():
 
     Snowflake(MAX_TS, 0)
 
-    with pytest.raises(ValueError, match="timestamp must be greater than 0 and less than 2199023255551!"):
+    with pytest.raises(ValueError, match="timestamp must not be negative and must be less than 2199023255551!"):
         Snowflake(MAX_TS + 1, 0)
 
-    with pytest.raises(ValueError, match="timestamp must be greater than 0 and less than 2199023255551!"):
+    with pytest.raises(ValueError, match="timestamp must not be negative and must be less than 2199023255551!"):
         Snowflake(-1, 0)
 
 
@@ -65,10 +67,10 @@ def test_instance_overflow():
 
     Snowflake(0, MAX_INSTANCE)
 
-    with pytest.raises(ValueError, match="instance must be greater than 0 and less than 1023!"):
+    with pytest.raises(ValueError, match="instance must not be negative and must be less than 1023!"):
         Snowflake(0, -1)
 
-    with pytest.raises(ValueError, match="instance must be greater than 0 and less than 1023!"):
+    with pytest.raises(ValueError, match="instance must not be negative and must be less than 1023!"):
         Snowflake(0, MAX_INSTANCE + 1)
 
 
@@ -84,8 +86,8 @@ def test_seq_overflow():
 
     Snowflake(0, 0, seq=MAX_SEQ)
 
-    with pytest.raises(ValueError, match="seq must be greater than 0 and less than 4095!"):
+    with pytest.raises(ValueError, match="seq must not be negative and must be less than 4095!"):
         Snowflake(0, 0, seq=-1)
 
-    with pytest.raises(ValueError, match="seq must be greater than 0 and less than 4095!"):
+    with pytest.raises(ValueError, match="seq must not be negative and must be less than 4095!"):
         Snowflake(0, 0, seq=MAX_SEQ + 1)
