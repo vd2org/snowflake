@@ -9,7 +9,7 @@ import setuptools
 
 setuptools.setup(
     name='snowflake-id',
-    version='0.0.2',
+    version='0.0.3',
     author='Vd',
     author_email='vd@vd2.org',
     url='https://github.com/vd2org/snowflake',
