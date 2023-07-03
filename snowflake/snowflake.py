@@ -74,7 +74,7 @@ class Snowflake:
 class SnowflakeGenerator:
     def __init__(self, instance: int, *, seq: int = 0, epoch: int = 0, timestamp: Optional[int] = None):
 
-        current = int(time() * 1000)
+        current = int(time() * 1000.)
 
         if current - epoch >= MAX_TS:
             raise OverflowError(f"The maximum current timestamp has been reached in selected epoch,"
@@ -112,7 +112,7 @@ class SnowflakeGenerator:
         return self
 
     def __next__(self) -> Optional[int]:
-        current = int(time() * 1000) - self._epo
+        current = int(time() * 1000.) - self._epo
 
         if current >= MAX_TS:
             raise OverflowError(f"The maximum current timestamp has been reached in selected epoch,"
