@@ -7,4 +7,4 @@ from .snowflake import *
 
 
 def version():
-    return "0.0.4"
+    return "0.0.5"
