@@ -1,6 +1,6 @@
 [project]
 name = "snowflake-id"
-version = "1.0.0"
+version = "1.0.1"
 description = "The Snowflake generator done right"
 keywords = [
     "snowflake", "snowflake-id", "id", "ids", "generator"
