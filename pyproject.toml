@@ -30,6 +30,11 @@ requires-python = ">=3.8,<3.13"
 readme = "README.md"
 license = { file = "LICENSE" }
 
+[project.urls]
+homepage = "https://github.com/vd2org/snowflake"
+repository = "https://github.com/vd2org/snowflake.git"
+issues = "https://github.com/vd2org/snowflake/issues"
+
 [build-system]
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
