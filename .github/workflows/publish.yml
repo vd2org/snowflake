@@ -7,29 +7,35 @@ on:
 
 jobs:
 
-
   publish:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v4
+      - name: "Set up Python 3.12"
+        uses: actions/setup-python@v5
         with:
-          python-version: 3.8
+          python-version: "3.12"
 
-      - name: Install dependencies
+      - name: "Install dependencies"
         run: |
           python3 -m pip install --upgrade pip
-          pip3 install -r requirements-package.txt
+          pip3 install pdm
 
-      - name: Build
+      - name: "Build"
         run: |
-          python3 setup.py sdist bdist_wheel
+          pdm install --no-self
+          pdm build
 
-      - name: Publish
+      - name: "Publish pypi"
         env:
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
         run: |
-          python3 -m twine upload -u __token__ -p $PYPI_TOKEN dist/*
+          pdm config repository.pypi.username "__token__"
+          pdm config repository.pypi.password "$PYPI_TOKEN"
+          pdm publish
+
+      - name: "Create release"
+        run: |
+          pdm run python tools/create_release.py ${{ secrets.GITHUB_TOKEN }} ${{ github.repository }} ${{ github.ref_name }} README.md
