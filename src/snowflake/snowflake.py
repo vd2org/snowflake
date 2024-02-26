@@ -8,7 +8,7 @@ from time import time
 from typing import Optional
 from datetime import datetime, timedelta, tzinfo
 
-__all__ = ('Snowflake', 'SnowflakeGenerator')
+__all__ = ('Snowflake', 'SnowflakeGenerator', 'MAX_TS', 'MAX_INSTANCE', 'MAX_SEQ')
 
 MAX_TS = 0b11111111111111111111111111111111111111111
 MAX_INSTANCE = 0b1111111111
