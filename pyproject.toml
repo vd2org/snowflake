@@ -1,0 +1,19 @@
+[project]
+name = "snowflake"
+version = "0.0.5"
+description = "The Snowflake generator done right"
+authors = [
+    {name = "vd", email = "snowflake@vd2.org"},
+]
+dependencies = []
+requires-python = ">=3.12"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[tool.pdm]
+distribution = true

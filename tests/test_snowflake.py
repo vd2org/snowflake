@@ -7,8 +7,8 @@ from datetime import tzinfo, timedelta
 
 import pytest
 
-from snowflake import Snowflake
-from snowflake.snowflake import MAX_TS, MAX_SEQ, MAX_INSTANCE
+from src.snowflake import Snowflake
+from src.snowflake import MAX_TS, MAX_SEQ, MAX_INSTANCE
 
 
 def test_parse():

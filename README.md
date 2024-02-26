@@ -17,7 +17,7 @@ Python 3.7 and above. No additional dependencies.
 ### Using generator
 
 ```python
-from snowflake import SnowflakeGenerator
+from src.snowflake import SnowflakeGenerator
 
 gen = SnowflakeGenerator(42)
 
@@ -40,7 +40,7 @@ for i in range(100):
 ### Parse snowflake id
 
 ```python
-from snowflake import Snowflake
+from src.snowflake import Snowflake
 
 sf = Snowflake.parse(856165981072306191, 1288834974657)
 
@@ -70,7 +70,7 @@ int(sf) = 856165981072306191
 ### Load generator state
 
 ```python
-from snowflake import SnowflakeGenerator, Snowflake
+from src.snowflake import SnowflakeGenerator, Snowflake
 
 sf = Snowflake.parse(856165981072306191, 1288834974657)
 gen = SnowflakeGenerator.from_snowflake(sf)
