@@ -6,7 +6,7 @@ See [here](https://en.wikipedia.org/wiki/Snowflake_ID) for additional informatio
 
 ### Requirements
 
-Python 3.7 and above. No additional dependencies.
+Python 3.8 and above. No additional dependencies.
 
 ### Installation
 
