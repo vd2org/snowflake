@@ -35,6 +35,12 @@ license = { file = "LICENSE" }
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
-
 [tool.pdm]
 distribution = true
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "pytest~=8.0.2; python_version >= '3.8'",
+    "ubump~=0.1.10; python_version >= '3.11'",
+    "requests>=2.31.0",
+]
