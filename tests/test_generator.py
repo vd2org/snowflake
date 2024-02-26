@@ -7,8 +7,8 @@ from time import time
 
 import pytest
 
-from src.snowflake import Snowflake, SnowflakeGenerator
-from src.snowflake import MAX_SEQ, MAX_INSTANCE
+from snowflake import Snowflake, SnowflakeGenerator
+from snowflake import MAX_SEQ, MAX_INSTANCE
 
 
 def test_generator():
