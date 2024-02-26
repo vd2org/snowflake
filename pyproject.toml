@@ -1,5 +1,5 @@
 [project]
-name = "snowflake"
+name = "snowflake-id"
 version = "0.0.5"
 description = "The Snowflake generator done right"
 keywords = [
