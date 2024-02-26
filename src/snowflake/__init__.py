@@ -5,6 +5,9 @@
 
 from .snowflake import *
 
+VERSION = "v0.1.5"
+__version__ = VERSION
+
 
 def version():
-    return "0.0.5"
+    return VERSION

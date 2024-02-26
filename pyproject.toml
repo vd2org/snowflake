@@ -44,3 +44,9 @@ dev = [
     "ubump~=0.1.10; python_version >= '3.11'",
     "requests>=2.31.0",
 ]
+
+[tool.ubump]
+template = "v${major}.${minor}.${patch}"
+message = "Bump to ${version}"
+tag = true
+files = ["src/snowflake/__init__.py"]
