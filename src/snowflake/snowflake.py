@@ -4,18 +4,26 @@
 
 
 from dataclasses import dataclass
-from time import time
-from typing import Optional
 from datetime import datetime, timedelta, tzinfo
-
-__all__ = ('Snowflake', 'SnowflakeGenerator', 'MAX_TS', 'MAX_INSTANCE', 'MAX_SEQ')
-
-MAX_TS = 0b11111111111111111111111111111111111111111
-MAX_INSTANCE = 0b1111111111
-MAX_SEQ = 0b111111111111
+from time import time
+from typing import Final, Optional, Tuple
 
 
-@dataclass(frozen=True)
+__all__: Final[Tuple[str, ...]] = (
+    'Snowflake',
+    'SnowflakeGenerator',
+    'MAX_TS',
+    'MAX_INSTANCE',
+    'MAX_SEQ',
+)
+
+
+MAX_TS: Final[int] = 0b11111111111111111111111111111111111111111
+MAX_INSTANCE: Final[int] = 0b1111111111
+MAX_SEQ: Final[int] = 0b111111111111
+
+
+@dataclass(frozen=True, slots=True)
 class Snowflake:
     timestamp: int
     instance: int
@@ -56,7 +64,7 @@ class Snowflake:
     def datetime(self) -> datetime:
         return datetime.utcfromtimestamp(self.seconds)
 
-    def datetime_tz(self, tz: Optional[tzinfo] = None) -> datetime:
+    def datetime_tz(self, tz: Optional[tzinfo] = None) -> 'datetime':
         return datetime.fromtimestamp(self.seconds, tz=tz)
 
     @property
@@ -72,6 +80,12 @@ class Snowflake:
 
 
 class SnowflakeGenerator:
+    __slots__: Final[Tuple[str, ...]] = (
+        "_epo",
+        "_ts",
+        "_inf",
+        "_seq"
+    )
     def __init__(self, instance: int, *, seq: int = 0, epoch: int = 0, timestamp: Optional[int] = None):
 
         current = (time() * 1000.).__int__()
@@ -80,16 +94,16 @@ class SnowflakeGenerator:
             raise OverflowError(f"The maximum current timestamp has been reached in selected epoch,"
                                 f"so Snowflake cannot generate more IDs!")
 
-        timestamp = timestamp or current
+        _timestamp: int = timestamp or current
 
-        if timestamp < 0 or timestamp > current:
+        if _timestamp < 0 or _timestamp > current:
             raise ValueError(f"timestamp must not be negative and must be less than {current}!")
 
         if epoch < 0 or epoch > current:
             raise ValueError(f"epoch must not be negative and must be lower than current time {current}!")
 
-        self._epo = epoch
-        self._ts = timestamp - self._epo
+        self._epo: int = epoch
+        self._ts: int = _timestamp - self._epo
 
         if instance < 0 or instance > MAX_INSTANCE:
             raise ValueError(f"instance must not be negative and must be less than {MAX_INSTANCE}!")
@@ -97,8 +111,8 @@ class SnowflakeGenerator:
         if seq < 0 or seq > MAX_SEQ:
             raise ValueError(f"seq must not be negative and must be less than {MAX_SEQ}!")
 
-        self._inf = instance << 12
-        self._seq = seq
+        self._inf: int = instance << 12
+        self._seq: int = seq
 
     @classmethod
     def from_snowflake(cls, sf: Snowflake) -> 'SnowflakeGenerator':
