@@ -23,7 +23,7 @@ MAX_INSTANCE: Final[int] = 0b1111111111
 MAX_SEQ: Final[int] = 0b111111111111
 
 
-@dataclass(frozen=True, slots=True)
+@dataclass(frozen=True)
 class Snowflake:
     timestamp: int
     instance: int
