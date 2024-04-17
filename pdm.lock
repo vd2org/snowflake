@@ -5,7 +5,7 @@
 groups = ["default", "dev"]
 strategy = ["cross_platform", "inherit_metadata"]
 lock_version = "4.4.1"
-content_hash = "sha256:cbd94bc2e3d8cb0cd63a1c3430ea4425fea61c6dbe6f53a76b68b0eb9fd4565f"
+content_hash = "sha256:79ea5f8d6d331eca34bfaeca08d4a0aef1553e6661c24a64f6712964d5e3cf56"
 
 [[package]]
 name = "certifi"
@@ -152,13 +152,13 @@ files = [
 
 [[package]]
 name = "packaging"
-version = "24.0"
+version = "23.2"
 requires_python = ">=3.7"
 summary = "Core utilities for Python packages"
 groups = ["dev"]
 files = [
-    {file = "packaging-24.0-py3-none-any.whl", hash = "sha256:2ddfb553fdf02fb784c234c7ba6ccc288296ceabec964ad2eae3777778130bc5"},
-    {file = "packaging-24.0.tar.gz", hash = "sha256:eb82c5e3e56209074766e6885bb04b8c38a0c015d0a30036ebe7ece34c9989e9"},
+    {file = "packaging-23.2-py3-none-any.whl", hash = "sha256:8c491190033a9af7e1d931d0b5dacc2ef47509b34dd0de67ed209b5203fc88c7"},
+    {file = "packaging-23.2.tar.gz", hash = "sha256:048fb0e9405036518eaaf48a55953c750c11e1a1b68e0dd1a9d62ed0c092cfc5"},
 ]
 
 [[package]]
@@ -218,6 +218,34 @@ marker = "python_version < \"3.11\""
 files = [
     {file = "tomli-2.0.1-py3-none-any.whl", hash = "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc"},
     {file = "tomli-2.0.1.tar.gz", hash = "sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"},
+]
+
+[[package]]
+name = "tomlkit"
+version = "0.12.4"
+requires_python = ">=3.7"
+summary = "Style preserving TOML library"
+groups = ["dev"]
+marker = "python_version >= \"3.11\""
+files = [
+    {file = "tomlkit-0.12.4-py3-none-any.whl", hash = "sha256:5cd82d48a3dd89dee1f9d64420aa20ae65cfbd00668d6f094d7578a78efbb77b"},
+    {file = "tomlkit-0.12.4.tar.gz", hash = "sha256:7ca1cfc12232806517a8515047ba66a19369e71edf2439d0f5824f91032b6cc3"},
+]
+
+[[package]]
+name = "ubump"
+version = "0.1.15"
+requires_python = "<4.0,>=3.11"
+summary = "Yet another bump tool"
+groups = ["dev"]
+marker = "python_version >= \"3.11\""
+dependencies = [
+    "packaging~=23.2",
+    "tomlkit~=0.12.3",
+]
+files = [
+    {file = "ubump-0.1.15-py3-none-any.whl", hash = "sha256:405907f6ebb222140c8345096ad066d5868aa2f63afe1c49f9e19e5b6aba4a76"},
+    {file = "ubump-0.1.15.tar.gz", hash = "sha256:839402ff31b0eee463d9b542873af43cc91cefa1ed8a8ec2b611ed08276b358d"},
 ]
 
 [[package]]
