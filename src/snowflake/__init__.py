@@ -6,7 +6,7 @@
 from .snowflake import Snowflake, SnowflakeGenerator
 from .snowflake import MAX_TS, MAX_SEQ, MAX_INSTANCE
 
-VERSION = "v1.0.1"
+VERSION = "v1.0.2"
 __version__ = VERSION
 
 
