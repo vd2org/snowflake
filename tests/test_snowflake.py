@@ -77,7 +77,7 @@ def test_instance_overflow():
 def test_epoch_overflow():
     Snowflake(0, 0, epoch=0)
 
-    with pytest.raises(ValueError, match="epoch must be greater than 0!"):
+    with pytest.raises(ValueError, match="epoch must not be negative!"):
         Snowflake(0, 0, epoch=-1)
 
 
