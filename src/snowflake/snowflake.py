@@ -24,7 +24,7 @@ class Snowflake:
 
     def __post_init__(self):
         if self.epoch < 0:
-            raise ValueError(f"epoch must be greater than 0!")
+            raise ValueError("epoch must not be negative!")
 
         if self.timestamp < 0 or self.timestamp > MAX_TS:
             raise ValueError(f"timestamp must not be negative and must be less than {MAX_TS}!")
